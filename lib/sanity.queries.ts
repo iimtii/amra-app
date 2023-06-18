@@ -55,6 +55,28 @@ export interface Post {
   content?: any
 }
 
+export interface Event {
+  _id: string
+  title?: string
+  coverImage?: any
+  date?: string
+  excerpt?: string
+  author?: Author
+  slug?: string
+  content?: any
+}
+
+export interface Song {
+  _id: string
+  title?: string
+  coverImage?: any
+  date?: string
+  excerpt?: string
+  author?: Author
+  slug?: string
+  content?: any
+}
+
 export interface Settings {
   title?: string
   description?: any[]

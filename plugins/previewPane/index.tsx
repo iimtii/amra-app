@@ -7,6 +7,7 @@
 import { DefaultDocumentNodeResolver } from 'sanity/desk'
 import authorType from 'schemas/author'
 import postType from 'schemas/post'
+import songType from 'schemas/song'
 
 import AuthorAvatarPreviewPane from './AuthorAvatarPreviewPane'
 import PostPreviewPane from './PostPreviewPane'
@@ -34,6 +35,20 @@ export const previewDocumentNode = ({
         ])
 
       case postType.name:
+        return S.document().views([
+          S.view.form(),
+          S.view
+            .component(({ document }) => (
+              <PostPreviewPane
+                slug={document.displayed.slug?.current}
+                apiVersion={apiVersion}
+                previewSecretId={previewSecretId}
+              />
+            ))
+            .title('Preview'),
+        ])
+
+        case songType.name:
         return S.document().views([
           S.view.form(),
           S.view
