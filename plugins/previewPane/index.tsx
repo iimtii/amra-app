@@ -48,19 +48,19 @@ export const previewDocumentNode = ({
             .title('Preview'),
         ])
 
-        case songType.name:
-        return S.document().views([
-          S.view.form(),
-          S.view
-            .component(({ document }) => (
-              <PostPreviewPane
-                slug={document.displayed.slug?.current}
-                apiVersion={apiVersion}
-                previewSecretId={previewSecretId}
-              />
-            ))
-            .title('Preview'),
-        ])
+      // case songType.name:
+      //   return S.document().views([
+      //     S.view.form(),
+      //     S.view
+      //       .component(({ document }) => (
+      //         <PostPreviewPane
+      //           slug={document.displayed.slug?.current}
+      //           apiVersion={apiVersion}
+      //           previewSecretId={previewSecretId}
+      //         />
+      //       ))
+      //       .title('Preview'),
+      //   ])
 
       default:
         return null

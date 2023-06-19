@@ -1,5 +1,7 @@
 import { defineField, defineType } from 'sanity'
 
+import authorType from './author'
+
 export default defineType({
     name: 'song',
     title: 'Song',
@@ -10,6 +12,12 @@ export default defineType({
         title: 'Name',
         type: 'string',
         validation: (rule) => rule.required(),
+      }),
+      defineField({
+        name: 'author',
+        title: 'Author',
+        type: 'reference',
+        to: [{ type: authorType.name }],
       }),
     ],
   })

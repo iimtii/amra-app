@@ -10,11 +10,22 @@ const postFields = groq`
   "author": author->{name, picture},
 `
 
+const songFields = groq`
+  _id,
+  name,
+  "author": author->{name, picture},
+`
+
 export const settingsQuery = groq`*[_type == "settings"][0]`
 
 export const indexQuery = groq`
 *[_type == "post"] | order(date desc, _updatedAt desc) {
   ${postFields}
+}`
+
+export const songQuery = groq`
+*[_type == "song"] {
+  ${songFields}
 }`
 
 export const postAndMoreStoriesQuery = groq`
@@ -55,26 +66,21 @@ export interface Post {
   content?: any
 }
 
-export interface Event {
-  _id: string
-  title?: string
-  coverImage?: any
-  date?: string
-  excerpt?: string
-  author?: Author
-  slug?: string
-  content?: any
-}
+// export interface Event {
+//   _id: string
+//   title?: string
+//   coverImage?: any
+//   date?: string
+//   excerpt?: string
+//   author?: Author
+//   slug?: string
+//   content?: any
+// }
 
 export interface Song {
   _id: string
-  title?: string
-  coverImage?: any
-  date?: string
-  excerpt?: string
+  name?: string
   author?: Author
-  slug?: string
-  content?: any
 }
 
 export interface Settings {

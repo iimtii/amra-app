@@ -7,6 +7,8 @@ import {
   postSlugsQuery,
   type Settings,
   settingsQuery,
+  type Song,
+  songQuery,
 } from 'lib/sanity.queries'
 import { createClient } from 'next-sanity'
 
@@ -27,6 +29,13 @@ export async function getSettings(): Promise<Settings> {
 export async function getAllPosts(): Promise<Post[]> {
   if (client) {
     return (await client.fetch(indexQuery)) || []
+  }
+  return []
+}
+
+export async function getAllSongs(): Promise<Song[]> {
+  if (client) {
+    return (await client.fetch(songQuery)) || []
   }
   return []
 }
