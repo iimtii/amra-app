@@ -80,6 +80,7 @@ export interface Post {
 export interface Song {
   _id: string
   name?: string
+  date?: string
   author?: Author
 }
 

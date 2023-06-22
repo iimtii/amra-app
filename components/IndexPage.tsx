@@ -6,6 +6,7 @@ import IndexPageHead from 'components/IndexPageHead'
 import MoreStories from 'components/MoreStories'
 import * as demo from 'lib/demo.data'
 import type { Post, Settings, Song } from 'lib/sanity.queries'
+import HeroSong from './HeroSong'
 
 export interface IndexPageProps {
   preview?: boolean
@@ -41,7 +42,7 @@ export default function IndexPage(props: IndexPageProps) {
           {songs && (
             songs.map((song) => {
               return(
-                <p key={song._id}>{song.name}</p>
+                <HeroSong key={song._id} name={song.name} date={song.date} author={song.author}/>
               )
             })
           )}
