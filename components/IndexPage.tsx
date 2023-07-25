@@ -4,19 +4,20 @@ import Layout from 'components/BlogLayout'
 import HeroPost from 'components/HeroPost'
 import IndexPageHead from 'components/IndexPageHead'
 import MoreStories from 'components/MoreStories'
-import IntroTemplate from 'intro-template'
 import * as demo from 'lib/demo.data'
-import type { Post, Settings } from 'lib/sanity.queries'
+import type { Post, Settings, Song } from 'lib/sanity.queries'
+import HeroSong from './HeroSong'
 
 export interface IndexPageProps {
   preview?: boolean
   loading?: boolean
   posts: Post[]
+  songs: Song[]
   settings: Settings
 }
 
 export default function IndexPage(props: IndexPageProps) {
-  const { preview, loading, posts, settings } = props
+  const { preview, loading, posts, songs, settings } = props
   const [heroPost, ...morePosts] = posts || []
   const { title = demo.title, description = demo.description } = settings || {}
 
@@ -37,9 +38,16 @@ export default function IndexPage(props: IndexPageProps) {
               excerpt={heroPost.excerpt}
             />
           )}
+          {console.log(songs)}
+          {songs && (
+            songs.map((song) => {
+              return(
+                <HeroSong key={song._id} name={song.name} date={song.date} author={song.author}/>
+              )
+            })
+          )}
           {morePosts.length > 0 && <MoreStories posts={morePosts} />}
         </Container>
-        <IntroTemplate />
       </Layout>
     </>
   )
